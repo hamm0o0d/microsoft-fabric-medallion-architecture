@@ -1,69 +1,134 @@
 Microsoft Fabric Medallion Architecture
 
-An end-to-end data engineering project built with Microsoft Fabric, Lakehouse, Notebooks, and Data Pipeline Orchestration.
+An end-to-end data engineering project built with Microsoft Fabric, implementing a layered Lakehouse architecture and automated data pipeline orchestration.
 
-!Microsoft Fabric !Architecture !GitHub
+Overview
 
-📌 Project Overview
+This project demonstrates a data engineering workflow that organizes data processing into Landing, Bronze, Silver, and Gold layers.
 
-This project demonstrates the implementation of an end-to-end data engineering workflow using Microsoft Fabric and the Medallion Architecture.
+It uses Microsoft Fabric notebooks to process data through each stage and a central pipeline to orchestrate the workflow.
 
-The solution organizes data processing into multiple layers, from raw data ingestion to curated, analytics-ready datasets. Fabric notebooks handle the transformation stages, while a central pipeline orchestrates the workflow.
+Architecture
 
-The project is designed to demonstrate practical skills in data ingestion, data transformation, Lakehouse architecture, and workflow orchestration.
+<!-- Upload your architecture diagram to GitHub and replace this path with its actual location. -->
 
-🏗️ Architecture
-
-<!-- Add your architecture diagram to the architecture/ folder and update this path if needed. -->
-
-!Fabric Project Architecture
+!Microsoft Fabric Architecture
 
 Data Flow
-mermaid
-flowchart LR
-    A[Source Systems] --> B[Landing Layer]
-    B --> C[Bronze Layer]
-    C --> D[Silver Layer]
-    D --> E[Gold Layer]
-    E --> F[Analytics and Reporting]
+text
+Source Data
+    |
+    v
+ Landing Layer
+    |
+    v
+ Bronze Layer
+    |
+    v
+ Silver Layer
+    |
+    v
+  Gold Layer
+    |
+    v
+ Analytics & Reporting
 
-    style B fill:#dbeafe,stroke:#2563eb,color:#111827
-    style C fill:#fce7d6,stroke:#c2410c,color:#111827
-    style D fill:#e5e7eb,stroke:#6b7280,color:#111827
-    style E fill:#fef08a,stroke:#ca8a04,color:#111827
-
-🥉 Medallion Layers
-Layer	Purpose
+Technologies
+Microsoft Fabric
+Fabric Lakehouse
+Fabric Notebooks
+Data Pipelines
+SQL Analytics Endpoints
+Git and GitHub
+Medallion Architecture
+Layer	Description
 Landing	Receives raw data from source systems.
 Bronze	Stores ingested data for downstream processing.
-Silver	Applies data cleaning, standardization, and transformation.
-Gold	Contains curated datasets prepared for analytical use.
+Silver	Cleans, standardizes, and transforms data.
+Gold	Stores curated datasets for analytical use.
+Pipeline Orchestration
 
-Each layer has a distinct responsibility, helping organize the processing workflow and maintain a clear separation between raw, transformed, and analytical data.
+The End to End Orchestration pipeline coordinates the ingestion and transformation stages.
 
-⚙️ Technologies Used
-Microsoft Fabric — Unified data engineering and analytics platform.
-Fabric Lakehouse — Lakehouse storage for the data layers.
-Fabric Notebooks — Data ingestion and transformation logic.
-Fabric Data Pipelines — Workflow orchestration and activity dependencies.
-SQL Analytics Endpoints — SQL-based access to Lakehouse data.
-Git and GitHub — Source control and project documentation.
-🔄 Pipeline Orchestration
-
-The project includes an End to End Orchestration pipeline that coordinates the main processing stages.
-
-mermaid
-flowchart TD
-    A[Raw to Landing] -->|Success| B[Landing to Bronze]
-    B -->|Success| C[Silver Transformations]
-    C -->|Success| D[Gold Layer]
-
-    style A fill:#dbeafe,stroke:#2563eb,color:#111827
-    style B fill:#fed7aa,stroke:#c2410c,color:#111827
-    style C fill:#e5e7eb,stroke:#6b7280,color:#111827
-    style D fill:#fef08a,stroke:#ca8a04,color:#111827
+Pipeline Workflow
+text
+Raw to Landing
+      |
+      v
+Landing to Bronze
+      |
+      v
+Silver Transformations
+      |
+      v
+Gold Layer
 
 Pipeline Activities
-Activity	Type	Responsibility
-Raw to Landing	Invoke Pipeline	Starts the data ingestion workflow.
-Landing to Bronze	Notebook	Processes
+Activity	Type	Purpose
+Raw to Landing	Invoke Pipeline	Starts the ingestion workflow.
+Landing to Bronze	Notebook	Processes data into the Bronze layer.
+Silver Transformations	Notebook	Transforms Bronze data into Silver.
+Gold Layer	Notebook	Produces curated analytical datasets.
+
+The pipeline uses activity dependencies to control the order of execution.
+
+Lakehouse Structure
+
+The project uses separate Lakehouses for the main processing layers:
+
+LH_Bronze
+LH_Silver
+LH_Gold
+
+This structure separates raw and transformed data from curated datasets intended for analytics.
+
+Notebooks
+
+The project includes notebooks for the following processing stages:
+
+Raw to Landing — Initial data ingestion.
+Landing to Bronze — Processing ingested data into Bronze.
+Silver Transformations — Data cleaning and transformation.
+Gold Layer — Preparation of analytics-ready datasets.
+Repository Structure
+text
+microsoft-fabric-medallion-architecture/
+├── README.md
+├── architecture/
+│   ├── fabric-architecture.png
+│   ├── fabric-workspace.png
+│   └── pipeline-orchestration.png
+├── notebooks/
+│   ├── 01_raw_to_landing.py
+│   ├── 02_landing_to_bronze.py
+│   ├── 03_silver_transform.py
+│   └── 04_gold_layer.py
+└── pipelines/
+    └── end_to_end_orchestration.md
+
+
+This is a suggested structure. Update the filenames to match the files you actually upload.
+
+Key Learning Outcomes
+Implementing the Medallion Architecture in Microsoft Fabric.
+Organizing data ingestion and transformation into separate layers.
+Developing Fabric notebooks for data processing.
+Orchestrating dependent activities using data pipelines.
+Structuring Lakehouse storage for downstream analytics.
+Documenting and version-controlling a data engineering project.
+Future Improvements
+Add data quality checks and validation.
+Implement pipeline logging and error handling.
+Document transformation rules and source schemas.
+Develop Power BI dashboards using Gold-layer datasets.
+Improve deployment and monitoring practices.
+Author
+
+Your Name
+
+Data Engineering | Microsoft Fabric | SQL | Python
+
+GitHub: https://github.com/YOUR_USERNAME
+LinkedIn: https://www.linkedin.com/in/YOUR_LINKEDIN/
+
+This project is part of my data engineering portfolio.
